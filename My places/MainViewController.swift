@@ -9,7 +9,7 @@ import UIKit
 
 class MainViewController: UITableViewController {
     
-    let restaurantsNames = ["шоколадница","якитория","бранч тайм","McDonalds","Тануки"]
+    let restaurantsNames = ["Шоколадница","Якитория","Бранч тайм","McDonalds","Тануки"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +25,14 @@ class MainViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.textLabel?.text = restaurantsNames[indexPath.row]
         cell.imageView?.image = UIImage(named: restaurantsNames[indexPath.row])
+        cell.imageView?.layer.cornerRadius = cell.frame.size.height / 2
+        cell.imageView?.clipsToBounds = true
         return cell
+    }
+
+    //MARK: - TableViewDelegate
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 85
     }
     /*
     // MARK: - Navigation
